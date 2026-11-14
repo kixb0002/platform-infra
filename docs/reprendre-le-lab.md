@@ -213,3 +213,10 @@ Commencer par observer et tester l’existant. Terraform décrit l’infrastruct
 Git décrit la version à déployer, Argo CD applique Git, ACR stocke les images.
 Ne jamais tout réinstaller pour simplement rouvrir le LAB. Une application
 fonctionnelle en interne n’a besoin ni d’IP publique dédiée ni de Gateway.
+
+## Dernier retour au mode normal
+
+Le 14 novembre 2026 : un nœud Ready, Dev Synced/Healthy, IP et rôle du test
+supprimés, add-ons et CRD Gateway/cert-manager retirés. Les tests HTTP internes
+et les contrôles réseau ont réussi. Supprimer chez Namecheap le A Record api
+s’il pointe encore vers l’ancienne IP ; ne pas réutiliser cette IP historique.
