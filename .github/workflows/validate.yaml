@@ -1,0 +1,28 @@
+name: Validate platform
+permissions:
+  contents: read
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      with:
+        persist-credentials: false
+    - uses: hashicorp/setup-terraform@b9cd54a3c349d3f38e8881555d616ced269862dd
+      with:
+        terraform_version: 1.17.0
+    - name: Format
+      run: terraform fmt -check -recursive .
+    - name: Validate without Azure credentials
+      working-directory: environments/lab
+      run: 'terraform init -backend=false -input=false -lockfile=readonly
+
+        terraform validate
+
+        '
+'on':
+  pull_request: null
+  push:
+    branches:
+    - main

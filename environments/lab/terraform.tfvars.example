@@ -1,0 +1,5 @@
+subscription_id = "REMPLACER_PAR_ABONNEMENT_VERIFIE"
+resource_group_name = "RG-Taoufik-Mellah"
+cluster_name = "aks-taoufik-lab"
+# Laisser désactivé tant que Private Endpoint, accès AKS et DNS ne sont pas validés.
+enable_key_vault = false
