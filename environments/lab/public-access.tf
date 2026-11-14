@@ -1,6 +1,6 @@
 variable "enable_public_api" {
   type        = bool
-  default     = false
+  default     = true
   description = "Activer seulement après accord sur les frais réseau et l’exposition HTTPS de l’API de démonstration."
 }
 
