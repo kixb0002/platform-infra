@@ -20,3 +20,12 @@ Publication : https://github.com/kixb0002/platform-infra, branche main.
 Le workflow de validation Terraform a réussi sur le commit initial a01b514 :
 https://github.com/kixb0002/platform-infra/actions/runs/43617732321.
 La CI valide les fichiers sans effectuer de plan/apply Azure.
+
+## Identité CI applicative
+
+`environments/lab/ci.tf` active l’identité managée `id-ecommerce-ci-lab`,
+la fédération GitHub limitée à main du dépôt public `kixb0002/ecommerce-app`
+et AcrPush sur le seul registre `tmgitops237d8c7f`. Aucun droit AKS.
+Les trois ressources ont été créées après accord explicite ; le plan de contrôle
+ne présente aucune différence. Le sujet OIDC utilise les IDs immuables du dépôt
+et du propriétaire. Ne pas réutiliser cette identité pour Argo CD SSO.
