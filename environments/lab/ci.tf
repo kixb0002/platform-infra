@@ -1,6 +1,6 @@
 variable "enable_ci_identity" {
   type    = bool
-  default = false
+  default = true
 }
 
 resource "azurerm_user_assigned_identity" "ecommerce_ci" {
