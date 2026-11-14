@@ -1,3 +1,4 @@
+# Rôle : Module optionnel de coffre privé, non activé ; exige un chemin réseau privé valide avant utilisation.
 variable "name" { type = string }
 variable "resource_group_name" { type = string }
 variable "location" { type = string }

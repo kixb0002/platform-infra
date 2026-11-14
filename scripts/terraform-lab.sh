@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Rôle : Initialise/valide/planifie le LAB avec état Linux privé ; aucun apply automatique et aucun état dans Git.
 set -euo pipefail
 root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)
 state_dir="${XDG_STATE_HOME:-$HOME/.local/state}/taoufik-gitops/lab"

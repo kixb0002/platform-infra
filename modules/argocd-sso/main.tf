@@ -1,3 +1,5 @@
+# Rôle : Application Entra mono-tenant, service principal et fédération AKS sans secret client ; protège les identités importées.
+# Backend/provideurs : versions figées pour que les plans soient reproductibles.
 terraform {
   required_providers {
     azuread = {
@@ -41,6 +43,7 @@ resource "azuread_service_principal" "this" {
   lifecycle { prevent_destroy = true }
 }
 
+# Seul ce ServiceAccount AKS peut présenter un jeton accepté par cette fédération.
 resource "azuread_application_federated_identity_credential" "aks" {
   application_id = azuread_application_registration.this.id
   display_name   = "aks-argocd-server"

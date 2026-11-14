@@ -1,3 +1,5 @@
+# Rôle : Racine Terraform LAB : lit AKS/RG existants, crée seulement les ressources explicitement déclarées et autorisées.
+# Backend/provideurs : versions figées pour que les plans soient reproductibles.
 terraform {
   backend "local" {}
   required_version = ">= 1.9, < 2.0"
@@ -32,6 +34,7 @@ variable "enable_key_vault" {
   description = "Activer seulement après validation du chemin réseau privé et des droits DNS/subnet."
 }
 
+# Le provider ne doit pas enregistrer automatiquement des services hors du RG autorisé.
 provider "azurerm" {
   subscription_id                 = var.subscription_id
   resource_provider_registrations = "none"
@@ -48,6 +51,7 @@ provider "azuread" {
 
 data "azurerm_client_config" "current" {}
 data "azurerm_resource_group" "existing" { name = var.resource_group_name }
+# Lecture seule : cette déclaration ne crée, ne remplace et ne met pas à l’échelle AKS.
 data "azurerm_kubernetes_cluster" "existing" {
   name                = var.cluster_name
   resource_group_name = data.azurerm_resource_group.existing.name
@@ -73,6 +77,7 @@ module "key_vault" {
   tenant_id           = data.azurerm_client_config.current.tenant_id
 }
 
+# Attribution limitée au scope ci-dessous ; ne pas élargir au groupe ou à la souscription.
 resource "azurerm_role_assignment" "aks_acr_pull" {
   scope                = module.acr.id
   role_definition_name = "AcrPull"

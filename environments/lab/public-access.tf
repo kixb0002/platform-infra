@@ -1,6 +1,7 @@
+# Rôle : IP de l’expérience HTTPS ; désactivée à l’état interne, indépendante du Load Balancer sortant partagé AKS.
 variable "enable_public_api" {
   type        = bool
-  default     = true
+  default     = false
   description = "Activer seulement après accord sur les frais réseau et l’exposition HTTPS de l’API de démonstration."
 }
 
@@ -16,9 +17,11 @@ resource "azurerm_public_ip" "ecommerce_api" {
     environment = "lab"
     purpose     = "ecommerce-https"
   }
+  # Protège une éventuelle prochaine IP ; retirer explicitement avant son futur nettoyage.
   lifecycle { prevent_destroy = true }
 }
 
+# Attribution limitée au scope ci-dessous ; ne pas élargir au groupe ou à la souscription.
 resource "azurerm_role_assignment" "aks_public_ip" {
   count                = var.enable_public_api ? 1 : 0
   scope                = azurerm_public_ip.ecommerce_api[0].id

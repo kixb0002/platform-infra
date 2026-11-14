@@ -1,3 +1,6 @@
+> Reprise après une pause : [guide pas à pas et schéma](docs/reprendre-le-lab.md).
+> Le test HTTPS public est optionnel ; le parcours normal utilise le tunnel local.
+
 # Infrastructure existante
 
 Des modules Terraform ACR/Key Vault sont maintenant disponibles dans

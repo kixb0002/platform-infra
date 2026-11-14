@@ -1,3 +1,4 @@
+# Rôle : Registre d’images LAB ; accès par identités et rôles, compte administrateur désactivé.
 variable "name" { type = string }
 variable "resource_group_name" { type = string }
 variable "location" { type = string }

@@ -1,3 +1,4 @@
+# Rôle : Imports déclaratifs des identités historiques : adopter sans recréer ; les UUID ne sont pas des mots de passe.
 # Adoption des identités LAB existantes ; IDs de ressources, aucun secret.
 
 import {

@@ -1,3 +1,4 @@
+# Rôle : Identité GitHub CI séparée du SSO ; confiance main de ce seul dépôt, AcrPush au seul registre.
 variable "enable_ci_identity" {
   type    = bool
   default = true
@@ -11,6 +12,7 @@ resource "azurerm_user_assigned_identity" "ecommerce_ci" {
   lifecycle { prevent_destroy = true }
 }
 
+# L’issuer et le subject exacts remplacent un secret client Azure stocké dans GitHub.
 resource "azurerm_federated_identity_credential" "ecommerce_main" {
   count                     = var.enable_ci_identity ? 1 : 0
   name                      = "github-ecommerce-main"
@@ -21,6 +23,7 @@ resource "azurerm_federated_identity_credential" "ecommerce_main" {
   lifecycle { prevent_destroy = true }
 }
 
+# Attribution limitée au scope ci-dessous ; ne pas élargir au groupe ou à la souscription.
 resource "azurerm_role_assignment" "ecommerce_ci_acr_push" {
   count                = var.enable_ci_identity ? 1 : 0
   scope                = module.acr.id

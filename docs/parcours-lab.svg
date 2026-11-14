@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1150" viewBox="0 0 1120 1150" role="img" aria-labelledby="title desc">
+<title id="title">Reprendre et expérimenter le LAB GitOps</title>
+<desc id="desc">Parcours normal interne en neuf étapes, avec branches optionnelles Terraform et HTTPS public.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="#35566b"/></marker></defs>
+<rect width="1120" height="1150" fill="#f4f7fa"/>
+<style>text{font-family:Arial,sans-serif;fill:#183044}.title{font-size:26px;font-weight:bold}.label{font-size:18px;font-weight:bold}.detail{font-size:14px}.arrow{stroke:#35566b;stroke-width:2;fill:none;marker-end:url(#arrow)}</style>
+<text x="40" y="45" class="title">Reprendre le LAB : observer → tester → modifier → vérifier</text>
+<rect x="40" y="80" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="109" class="label">1 · Retrouver les trois dépôts</text><text x="60" y="135" class="detail">Application · GitOps · Terraform et sauvegarde du state</text>
+<path d="M370 156 V182" class="arrow"/>
+<rect x="40" y="182" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="211" class="label">2 · Vérifier les connexions et la cible</text><text x="60" y="237" class="detail">Azure / GitHub → RG-Taoufik-Mellah / aks-taoufik-lab</text>
+<path d="M370 258 V284" class="arrow"/>
+<rect x="40" y="284" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="313" class="label">3 · Observer le cluster existant</text><text x="60" y="339" class="detail">Démarrer seulement si nécessaire → nœud Ready → pods sains</text>
+<path d="M370 360 V386" class="arrow"/>
+<rect x="40" y="386" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="415" class="label">4 · Vérifier Argo CD</text><text x="60" y="441" class="detail">ecommerce-dev : Synced / Healthy</text>
+<path d="M370 462 V488" class="arrow"/>
+<rect x="40" y="488" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="517" class="label">5 · Tester en interne</text><text x="60" y="543" class="detail">Tunnel local 8081 → santé / catalogue / devis</text>
+<path d="M370 564 V590" class="arrow"/>
+<rect x="40" y="590" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="619" class="label">6 · Modifier et tester le code</text><text x="60" y="645" class="detail">Flask → tests unitaires → commit / push</text>
+<path d="M370 666 V692" class="arrow"/>
+<rect x="40" y="692" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="721" class="label">7 · Construire et contrôler l’image</text><text x="60" y="747" class="detail">GitHub CI → audit / build / test runtime / Trivy → ACR</text>
+<path d="M370 768 V794" class="arrow"/>
+<rect x="40" y="794" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="823" class="label">8 · Proposer la version Dev</text><text x="60" y="849" class="detail">PR du digest dans GitOps → revue et contrôles → fusion</text>
+<path d="M370 870 V896" class="arrow"/>
+<rect x="40" y="896" width="660" height="76" rx="12" fill="white" stroke="#4d91a4"/>
+<text x="60" y="925" class="label">9 · Vérifier le résultat réel</text><text x="60" y="951" class="detail">Argo CD → AKS → rollout / image / tests HTTP</text>
+<rect x="740" y="290" width="340" height="146" rx="12" fill="#e7efff" stroke="#7395d8"/>
+<text x="760" y="322" class="label">Besoin Azure / Entra ?</text>
+<text x="760" y="351" class="detail">Restaurer le state Terraform</text>
+<text x="760" y="375" class="detail">Plan → revue → apply ciblé</text>
+<text x="760" y="399" class="detail">Ne pas recréer le cluster existant</text>
+<path d="M700 322 H740" class="arrow"/>
+<rect x="740" y="490" width="340" height="216" rx="12" fill="#fff1dc" stroke="#c88b35"/>
+<text x="760" y="522" class="label">HTTPS public : optionnel</text>
+<text x="760" y="551" class="detail">Accord coût / capacité / IP / DNS</text>
+<text x="760" y="575" class="detail">Passerelle + certificat → tests</text>
+<text x="760" y="607" class="detail">Après test : retirer l’exposition,</text>
+<text x="760" y="631" class="detail">le certificat et les add-ons,</text>
+<text x="760" y="655" class="detail">le DNS et l’IP, revenir à 1 nœud</text>
+<text x="760" y="683" class="detail">Puis retester l’API interne</text>
+<path d="M700 526 H740" class="arrow"/>
+<rect x="40" y="1040" width="1040" height="72" rx="12" fill="#e0f2e7"/>
+<text x="60" y="1070" class="label">État normal : API interne · 1 nœud · Argo CD privé · aucune IP publique dédiée à l’API</text>
+<text x="60" y="1095" class="detail">Si une version échoue : PR vers un digest connu, puis vérifier la réconciliation et les tests réels.</text>
+</svg>
