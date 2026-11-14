@@ -15,3 +15,8 @@ Owner sur ce groupe ne donne pas de droits implicites sur le groupe managé AKS,
 les ressources réseau partagées, le tenant Entra ou l'abonnement. L'enregistrement
 des providers, les applications Entra et les zones DNS partagées peuvent nécessiter
 une intervention administrateur distincte.
+
+Publication : https://github.com/kixb0002/platform-infra, branche main.
+Le workflow de validation Terraform a réussi sur le commit initial a01b514 :
+https://github.com/kixb0002/platform-infra/actions/runs/43617732321.
+La CI valide les fichiers sans effectuer de plan/apply Azure.
